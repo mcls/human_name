@@ -1,6 +1,6 @@
 # HumanName
 
-TODO: Write a gem description
+Never write `def full_name` again!
 
 ## Installation
 
@@ -24,12 +24,13 @@ class Person
 
   attr_reader :first_name, :last_name
 
-  def initalize(first_name, last_name)
+  def initialize(first_name, last_name)
     @first_name, @last_name = first_name, last_name
   end
 end
 
 person = Person.new('John', 'Doe')
+person.human_name     # => #<HumanName:0x007fe590825b68 @first_name="John", @last_name="Doe">
 person.full_name      # => 'John Doe'
 person.name_initials  # => 'J. D.'
 ```
