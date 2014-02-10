@@ -1,5 +1,10 @@
 # HumanName
 
+[![Gem
+Version](https://badge.fury.io/rb/human_name.png)](http://badge.fury.io/rb/human_name)
+[![Build
+Status](https://travis-ci.org/mcls/human_name.png?branch=master)](https://travis-ci.org/mcls/human_name)
+
 Never write `def full_name` again!
 
 ## Installation
