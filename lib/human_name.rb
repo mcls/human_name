@@ -1,6 +1,7 @@
 require "forwardable"
 require "human_name/version"
 require "human_name/methods"
+require "human_name/defaults"
 
 class HumanName
   attr_reader :first_name, :last_name

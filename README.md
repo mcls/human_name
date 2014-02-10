@@ -24,8 +24,12 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+require "rubygems"
+require "human_name"
+
 class Person
-  include HumanName::Methods.new(:first_name, :last_name)
+  # Assumes :first_name and :last_name methods exist
+  include HumanName::Defaults
 
   attr_reader :first_name, :last_name
 
@@ -34,10 +38,30 @@ class Person
   end
 end
 
-person = Person.new('John', 'Doe')
-person.human_name     # => #<HumanName:0x007fe590825b68 @first_name="John", @last_name="Doe">
-person.full_name      # => 'John Doe'
-person.name_initials  # => 'J. D.'
+person = Person.new("John", "Doe")
+p person.human_name     # => #<HumanName:0x007fe590825b68 @first_name="John", @last_name="Doe">
+p person.full_name      # => "John Doe"
+p person.name_initials  # => "J. D."
+
+class P3rs0n
+  # You can also use custom methods
+  include HumanName::Methods.new(:f_n4m3, :l_n4m3)
+
+  def f_n4m3
+    "John"
+  end
+
+  def l_n4m3
+    "Doe"
+  end
+end
+
+person = P3rs0n.new
+p person.human_name     # => #<HumanName:0x007fe590825b68 @first_name="John", @last_name="Doe">
+p person.full_name      # => "John Doe"
+p person.name_initials  # => "J. D."
+p person.human_name.first_name  # => "John"
+p person.human_name.last_name   # => "Doe"
 ```
 
 ## Contributing
