@@ -1,4 +1,3 @@
-require "forwardable"
 require "human_name/version"
 require "human_name/methods"
 require "human_name/defaults"

@@ -1,3 +1,5 @@
+require "forwardable"
+
 class HumanName
   class Methods < Module
     def initialize(first_name_method = :first_name, last_name_method = :last_name)
@@ -15,8 +17,14 @@ class HumanName
           HumanName.new(first_name, last_name)
         end
 
-        extend Forwardable
-        def_delegators :human_name, :full_name, :name_initials
+        if Module.respond_to?(:delegate)
+          # Assume the ActiveSupport Core Extension for method delegation has
+          # been included
+          delegate :full_name, :name_initials, to: :human_name
+        else
+          extend Forwardable
+          def_delegators :human_name, :full_name, :name_initials
+        end
       end
     end
   end
